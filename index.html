@@ -6,77 +6,386 @@
     <title>Pact — Screen Time Accountability</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
-            background: #0F0F24;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', system-ui, sans-serif;
+            background: #0A0A1A;
             color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Hero */
+        .hero {
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 60px 24px;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 24px;
+            background: radial-gradient(ellipse at 50% 0%, rgba(77,128,255,0.15) 0%, transparent 60%);
         }
-        .container { max-width: 600px; text-align: center; }
-        .icon {
-            width: 100px; height: 100px;
+
+        .hero-icon {
+            width: 120px; height: 120px;
             background: linear-gradient(135deg, #4D80FF, #7B5EFF);
-            border-radius: 22px;
+            border-radius: 28px;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 32px;
-            font-size: 48px;
+            font-size: 56px;
+            margin-bottom: 32px;
+            box-shadow: 0 20px 60px rgba(77,128,255,0.3);
+            animation: float 3s ease-in-out infinite;
         }
-        h1 { font-size: 42px; font-weight: 800; margin-bottom: 8px; }
-        .subtitle { color: #A0A0B8; font-size: 18px; margin-bottom: 40px; }
-        .features {
-            display: grid; grid-template-columns: 1fr 1fr;
-            gap: 16px; text-align: left; margin-bottom: 40px;
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-        .feature {
-            background: #1A1A2E;
-            border: 1px solid rgba(255,255,255,0.06);
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, #fff 0%, #a0b4ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .tagline {
+            font-size: 22px;
+            color: #8888AA;
+            max-width: 500px;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+
+        .hero .tagline strong { color: #fff; }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #4D80FF;
+            color: #fff;
+            font-size: 17px;
+            font-weight: 600;
+            padding: 16px 36px;
             border-radius: 14px;
-            padding: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+            box-shadow: 0 8px 30px rgba(77,128,255,0.4);
         }
-        .feature h3 { font-size: 15px; margin-bottom: 6px; }
-        .feature p { font-size: 13px; color: #A0A0B8; line-height: 1.5; }
-        .footer { color: #555; font-size: 13px; margin-top: 60px; }
-        .footer a { color: #4D80FF; text-decoration: none; }
-        @media (max-width: 500px) {
-            .features { grid-template-columns: 1fr; }
-            h1 { font-size: 32px; }
+        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(77,128,255,0.5); }
+
+        .scroll-hint {
+            margin-top: 60px;
+            color: #444;
+            font-size: 13px;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(8px); }
+        }
+
+        /* Section */
+        section {
+            padding: 100px 24px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 13px;
+            font-weight: 700;
+            color: #4D80FF;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        section .desc {
+            font-size: 18px;
+            color: #8888AA;
+            line-height: 1.6;
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        /* Problem Section */
+        .problem {
+            background: linear-gradient(180deg, #0A0A1A 0%, #111128 100%);
+            text-align: center;
+        }
+
+        .problem-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .problem-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: center;
+        }
+
+        .problem-card .emoji { font-size: 36px; margin-bottom: 12px; }
+        .problem-card h3 { font-size: 16px; margin-bottom: 8px; }
+        .problem-card p { font-size: 14px; color: #8888AA; line-height: 1.5; }
+
+        /* How It Works */
+        .how-it-works { text-align: center; }
+
+        .steps {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            counter-reset: step;
+        }
+
+        .step {
+            background: #111128;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 32px 24px;
+            text-align: left;
+            position: relative;
+            counter-increment: step;
+        }
+
+        .step::before {
+            content: counter(step);
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 48px;
+            font-weight: 800;
+            color: rgba(77,128,255,0.1);
+        }
+
+        .step .step-icon { font-size: 32px; margin-bottom: 16px; }
+        .step h3 { font-size: 18px; margin-bottom: 8px; }
+        .step p { font-size: 14px; color: #8888AA; line-height: 1.6; }
+
+        /* Features */
+        .features-section { text-align: center; }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+        }
+
+        .feat {
+            background: #111128;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 28px 20px;
+            text-align: left;
+        }
+
+        .feat .feat-icon {
+            width: 44px; height: 44px;
+            background: rgba(77,128,255,0.12);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .feat h3 { font-size: 16px; margin-bottom: 6px; }
+        .feat p { font-size: 13px; color: #8888AA; line-height: 1.5; }
+
+        /* Quote */
+        .quote-section {
+            text-align: center;
+            padding: 80px 24px;
+            background: linear-gradient(180deg, #111128 0%, #0A0A1A 100%);
+        }
+
+        .quote {
+            font-size: 28px;
+            font-weight: 600;
+            font-style: italic;
+            max-width: 600px;
+            margin: 0 auto 16px;
+            line-height: 1.4;
+            color: #ccc;
+        }
+
+        .quote-attr { color: #555; font-size: 15px; }
+
+        /* CTA Bottom */
+        .bottom-cta {
+            text-align: center;
+            padding: 100px 24px;
+            background: radial-gradient(ellipse at 50% 100%, rgba(77,128,255,0.1) 0%, transparent 60%);
+        }
+
+        .bottom-cta h2 { font-size: 40px; margin-bottom: 16px; }
+        .bottom-cta p { color: #8888AA; font-size: 18px; margin-bottom: 32px; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 24px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #444;
+            font-size: 13px;
+        }
+        footer a { color: #4D80FF; text-decoration: none; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 36px; }
+            .hero .tagline { font-size: 18px; }
+            .problem-grid, .features-grid { grid-template-columns: 1fr; }
+            .steps { grid-template-columns: 1fr; }
+            section h2 { font-size: 28px; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🔒</div>
-        <h1>Pact</h1>
-        <p class="subtitle">Screen Time, Enforced by Accountability</p>
 
-        <div class="features">
-            <div class="feature">
-                <h3>🛡️ Hard Block</h3>
-                <p>Block distracting apps using Apple's Screen Time API. No workarounds.</p>
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-icon">🔒</div>
+        <h1>Pact</h1>
+        <p class="tagline">
+            The screen time app you <strong>can't cheat</strong>.<br>
+            Because your friend holds the key.
+        </p>
+        <a href="#how" class="cta-btn">See How It Works ↓</a>
+        <p class="scroll-hint">↓</p>
+    </div>
+
+    <!-- Problem -->
+    <section class="problem">
+        <p class="section-label">The Problem</p>
+        <h2>Every screen time app can be bypassed in 30 seconds.</h2>
+        <p class="desc">Opal, ScreenZen, one sec, Brick — they all rely on your willpower. When it's 2 AM and you want to scroll, willpower loses every time.</p>
+
+        <div class="problem-grid">
+            <div class="problem-card">
+                <div class="emoji">😤</div>
+                <h3>Settings → Disable</h3>
+                <p>Every blocker can be turned off in iOS Settings. Zero friction.</p>
             </div>
-            <div class="feature">
-                <h3>👥 Partner Lock</h3>
-                <p>Pair with a friend who approves unlock requests. Social accountability.</p>
+            <div class="problem-card">
+                <div class="emoji">🧠</div>
+                <h3>Willpower Fails</h3>
+                <p>Your rational brain sets the block. Your impulse brain removes it 3 hours later.</p>
             </div>
-            <div class="feature">
-                <h3>⏱ Timer & Schedule</h3>
-                <p>Block apps for a set duration or on a daily recurring schedule.</p>
-            </div>
-            <div class="feature">
-                <h3>🔥 Streaks</h3>
-                <p>Track consecutive days of discipline. Don't break the chain.</p>
+            <div class="problem-card">
+                <div class="emoji">💸</div>
+                <h3>$100/Year for Nothing</h3>
+                <p>Premium apps charge $100/yr for blocks you can bypass in seconds.</p>
             </div>
         </div>
+    </section>
 
-        <p class="footer">
-            <a href="privacy.html">Privacy Policy</a> · 
-            Built by Yesake Teshale · 
-            Contact: yesaket@icloud.com
-        </p>
+    <!-- How It Works -->
+    <section class="how-it-works" id="how">
+        <p class="section-label">How Pact Works</p>
+        <h2>A human in the loop changes everything.</h2>
+        <p class="desc">Pact puts a real person between you and your distractions. The social friction of asking "can I scroll Instagram at 2 AM?" is the real blocker.</p>
+
+        <div class="steps">
+            <div class="step">
+                <div class="step-icon">📱</div>
+                <h3>Create a Mode</h3>
+                <p>Pick the apps you want to block — social media, games, whatever distracts you. Save it as a reusable mode.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">🔒</div>
+                <h3>Lock In</h3>
+                <p>Choose Partner Lock, set a timer, or create a daily schedule. Hit Lock In. The apps are now blocked.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">👋</div>
+                <h3>Need a Break?</h3>
+                <p>Tap "Request Break." Your accountability partner gets a push notification and decides how long to unlock you.</p>
+            </div>
+            <div class="step">
+                <div class="step-icon">✅</div>
+                <h3>Auto Re-lock</h3>
+                <p>After the approved time expires, your apps automatically re-lock. Your streak keeps growing.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features-section">
+        <p class="section-label">Features</p>
+        <h2>Built for people who are serious about change.</h2>
+        <p class="desc">Not another cute productivity app. Pact is infrastructure for discipline.</p>
+
+        <div class="features-grid">
+            <div class="feat">
+                <div class="feat-icon">��️</div>
+                <h3>Hard Block</h3>
+                <p>Uses Apple's Screen Time API. Not a VPN hack. Real system-level blocking.</p>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">👥</div>
+                <h3>Partner Lock</h3>
+                <p>Pair with a friend. They approve or deny your unlock requests via push notification.</p>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">⏱</div>
+                <h3>Timer Mode</h3>
+                <p>Block apps for 10 minutes or 12 hours. You pick. It auto-unlocks when time's up.</p>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">📅</div>
+                <h3>Schedule Mode</h3>
+                <p>Block apps every night 10 PM to 7 AM. Recurring. Automatic. Partner-approved cancellation only.</p>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">🔥</div>
+                <h3>Streak Tracking</h3>
+                <p>Track consecutive days of discipline. Resets only when your partner unlocks you. Don't break the chain.</p>
+            </div>
+            <div class="feat">
+                <div class="feat-icon">📦</div>
+                <h3>Custom Modes</h3>
+                <p>Create modes like "Work Focus" or "Sleep Mode" with different app groups. Switch instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <div class="quote-section">
+        <p class="quote">"The social friction of admitting 'I want to scroll Instagram at 2 AM' is the real blocker — not the software."</p>
+        <p class="quote-attr">— The idea behind Pact</p>
     </div>
+
+    <!-- Bottom CTA -->
+    <div class="bottom-cta">
+        <h2>Ready to make a pact?</h2>
+        <p>Stop relying on willpower. Start relying on people.</p>
+        <a href="mailto:yesaket@icloud.com" class="cta-btn">Get Early Access →</a>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>
+            <a href="privacy.html">Privacy Policy</a> · 
+            <a href="mailto:yesaket@icloud.com">Contact</a> · 
+            Built by Yesake Teshale
+        </p>
+        <p style="margin-top: 8px;">© 2026 Pact. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>

@@ -8,61 +8,71 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-            background: #0F0F24; color: #d0d0d8;
-            padding: 40px 24px; line-height: 1.7;
+            background: #0A0A1A; color: #c8c8d4;
+            padding: 60px 24px; line-height: 1.8;
         }
         .container { max-width: 640px; margin: 0 auto; }
-        h1 { color: #fff; font-size: 28px; margin-bottom: 8px; }
-        .date { color: #888; font-size: 14px; margin-bottom: 32px; }
-        h2 { color: #fff; font-size: 18px; margin: 28px 0 8px; }
+        h1 { color: #fff; font-size: 32px; margin-bottom: 4px; }
+        .date { color: #666; font-size: 14px; margin-bottom: 40px; }
+        h2 { color: #fff; font-size: 20px; margin: 36px 0 12px; }
         p, li { font-size: 15px; margin-bottom: 12px; }
         ul { padding-left: 20px; }
-        a { color: #4D80FF; }
+        a { color: #4D80FF; text-decoration: none; }
+        .back { display: inline-block; margin-bottom: 32px; color: #4D80FF; font-size: 14px; }
     </style>
 </head>
 <body>
     <div class="container">
+        <a href="index.html" class="back">← Back to Pact</a>
         <h1>Privacy Policy</h1>
-        <p class="date">Last updated: March 29, 2026</p>
+        <p class="date">Effective: March 29, 2026</p>
 
-        <h2>Overview</h2>
-        <p>Pact ("we", "the app") is a screen time management app that helps individuals block distracting apps on their own iOS devices. Your privacy is important to us.</p>
+        <h2>What Pact Does</h2>
+        <p>Pact is a screen time accountability app. You block distracting apps on your own device and optionally pair with a friend who can approve unlock requests. Everything is self-initiated.</p>
 
-        <h2>Data We Collect</h2>
+        <h2>What We Collect</h2>
         <ul>
-            <li><strong>Email address</strong> — for account creation and authentication via Firebase Auth.</li>
-            <li><strong>Display name</strong> — derived from your email, shown to your accountability partner.</li>
-            <li><strong>Partner pairing</strong> — when you pair with a friend, we store the connection in our database.</li>
-            <li><strong>Unlock requests</strong> — we store request status (pending/approved/denied) to facilitate the accountability flow.</li>
-            <li><strong>Streak data</strong> — consecutive days of discipline, stored to show your progress.</li>
-            <li><strong>Push notification token</strong> — to send you notifications when your partner sends a request.</li>
+            <li><strong>Email address</strong> — for account creation via Firebase Authentication.</li>
+            <li><strong>Display name</strong> — shown to your accountability partner so they know who's requesting.</li>
+            <li><strong>Partner pairing ID</strong> — to connect you with your chosen accountability partner.</li>
+            <li><strong>Unlock request status</strong> — whether a request is pending, approved, or denied.</li>
+            <li><strong>Streak data</strong> — your current and best streak counts.</li>
+            <li><strong>Push notification token</strong> — so we can notify you when your partner sends a request.</li>
         </ul>
 
-        <h2>Data We Do NOT Collect</h2>
+        <h2>What We Never Collect</h2>
+        <p>This is important:</p>
         <ul>
-            <li>We never see which apps you block. Apple's Screen Time API uses opaque tokens — we cannot access app names or bundle identifiers.</li>
-            <li>We do not collect usage duration, screen recordings, screenshots, or browsing history.</li>
-            <li>We do not sell or share your data with third parties.</li>
+            <li>🚫 <strong>We never see which apps you block.</strong> Apple's Screen Time API uses opaque, encrypted tokens. We literally cannot access app names, bundle IDs, or icons on our servers.</li>
+            <li>🚫 We do not track how long you use any app.</li>
+            <li>🚫 We do not take screenshots or screen recordings.</li>
+            <li>🚫 We do not collect browsing history.</li>
+            <li>🚫 We do not sell, rent, or share your data with anyone.</li>
         </ul>
 
-        <h2>How We Use Your Data</h2>
-        <p>Your data is used solely to provide the app's core functionality: account management, partner pairing, unlock request flow, and push notifications.</p>
+        <h2>Where Your Data Lives</h2>
+        <p>Account and pairing data is stored in Google Firebase (United States). Your blocked app selections are stored <strong>only on your device</strong> — they never leave your phone.</p>
 
-        <h2>Data Storage</h2>
-        <p>Data is stored in Google Firebase (Firestore and Authentication), hosted in the United States. Blocked app selections are stored locally on your device only.</p>
-
-        <h2>Data Deletion</h2>
-        <p>You can delete your account and all associated data by contacting us at <a href="mailto:yesaket@icloud.com">yesaket@icloud.com</a>.</p>
+        <h2>Deleting Your Data</h2>
+        <p>You can delete your account directly within the app. When you delete your account, all your data — profile, partner connections, unlock history, and streak records — is permanently removed from our servers. Nothing is retained.</p>
 
         <h2>Third-Party Services</h2>
+        <p>We use the following Google Firebase services:</p>
         <ul>
-            <li>Firebase Authentication (Google)</li>
-            <li>Cloud Firestore (Google)</li>
-            <li>Firebase Cloud Messaging (Google)</li>
+            <li>Firebase Authentication — sign-in</li>
+            <li>Cloud Firestore — data storage</li>
+            <li>Firebase Cloud Messaging — push notifications</li>
         </ul>
+        <p>These services are governed by <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a>.</p>
+
+        <h2>Children</h2>
+        <p>Pact is designed for adults managing their own screen time. It is not intended for children under 13. We do not use parental controls or Family Sharing features.</p>
+
+        <h2>Changes</h2>
+        <p>If we update this policy, we'll post the new version here with an updated date.</p>
 
         <h2>Contact</h2>
-        <p>Questions? Email <a href="mailto:yesaket@icloud.com">yesaket@icloud.com</a></p>
+        <p>Questions about your data? Email <a href="mailto:yesaket@icloud.com">yesaket@icloud.com</a></p>
     </div>
 </body>
 </html>
