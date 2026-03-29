@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pact — Screen Time Accountability</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro', system-ui, sans-serif;
+            background: #0F0F24;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 60px 24px;
+        }
+        .container { max-width: 600px; text-align: center; }
+        .icon {
+            width: 100px; height: 100px;
+            background: linear-gradient(135deg, #4D80FF, #7B5EFF);
+            border-radius: 22px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 32px;
+            font-size: 48px;
+        }
+        h1 { font-size: 42px; font-weight: 800; margin-bottom: 8px; }
+        .subtitle { color: #A0A0B8; font-size: 18px; margin-bottom: 40px; }
+        .features {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 16px; text-align: left; margin-bottom: 40px;
+        }
+        .feature {
+            background: #1A1A2E;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 14px;
+            padding: 20px;
+        }
+        .feature h3 { font-size: 15px; margin-bottom: 6px; }
+        .feature p { font-size: 13px; color: #A0A0B8; line-height: 1.5; }
+        .footer { color: #555; font-size: 13px; margin-top: 60px; }
+        .footer a { color: #4D80FF; text-decoration: none; }
+        @media (max-width: 500px) {
+            .features { grid-template-columns: 1fr; }
+            h1 { font-size: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">🔒</div>
+        <h1>Pact</h1>
+        <p class="subtitle">Screen Time, Enforced by Accountability</p>
+
+        <div class="features">
+            <div class="feature">
+                <h3>🛡️ Hard Block</h3>
+                <p>Block distracting apps using Apple's Screen Time API. No workarounds.</p>
+            </div>
+            <div class="feature">
+                <h3>👥 Partner Lock</h3>
+                <p>Pair with a friend who approves unlock requests. Social accountability.</p>
+            </div>
+            <div class="feature">
+                <h3>⏱ Timer & Schedule</h3>
+                <p>Block apps for a set duration or on a daily recurring schedule.</p>
+            </div>
+            <div class="feature">
+                <h3>🔥 Streaks</h3>
+                <p>Track consecutive days of discipline. Don't break the chain.</p>
+            </div>
+        </div>
+
+        <p class="footer">
+            <a href="privacy.html">Privacy Policy</a> · 
+            Built by Yesake Teshale · 
+            Contact: yesaket@icloud.com
+        </p>
+    </div>
+</body>
+</html>
